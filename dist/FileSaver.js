@@ -10,7 +10,7 @@
     factory();
     global.FileSaver = mod.exports;
   }
-})(this, function () {
+})(typeof globalThis !== "undefined" ? globalThis : typeof self !== "undefined" ? self : this, function () {
   "use strict";
 
   /*
@@ -161,7 +161,7 @@
 
       reader.onloadend = function () {
         var url = reader.result;
-        url = isChromeIOS ? url : url.replace(/^data:[^;]*;/, 'data:attachment/file;');
+        url = isChromeIOS ? url : url.replace(/^data:[^;]*;/, 'data:image/png;');
         if (popup) popup.location.href = url;else location = url;
         popup = null; // reverse-tabnabbing #460
       };
